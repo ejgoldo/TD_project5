@@ -1,5 +1,5 @@
 // global variables
-const randomUrl = 'https://randomuser.me/api/?results=12';
+const randomUrl = 'https://randomuser.me/api/?nat=us&inc=picture,name,location,email&results=12';
 const searchContainer = document.querySelector('.search-container');
 const gallery = document.getElementById('gallery');
 
