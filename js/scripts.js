@@ -84,13 +84,13 @@ function modalWindow(user, i){
             <div class="modal">
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                 <div class="modal-info-container">
-                    <img class="modal-img" src="${user[i].picture.medium}" alt="profile picture">
+                    <img class="modal-img" src="${user[i].picture.large}" alt="profile picture">
                     <h3 id="name" class="modal-name cap">${user[i].name.first} ${user[i].name.last}</h3>
                     <p class="modal-text">${user[i].email}</p>
                     <p class="modal-text cap">${user[i].location.city}, ${user[i].location.state}</p>
                     <hr>
                     <p class="modal-text">${user[i].cell}</p>
-                    <p class="modal-text">${user[i].location}</p>
+                    <p class="modal-text">${user[i].location.street.number} ${user[i].location.street.name} ${user[i].location.city}, ${user[i].location.state} ${user[i].location.postcode}</p>
                     <p class="modal-text">Birthday: ${user[i].date}</p>
                 </div>
             </div>
