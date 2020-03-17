@@ -25,6 +25,7 @@ function fetchData(url){
 fetchData(randomUrl)
     .then(data => {
         generateGallery(data.results)
+        clickCard(data.results)
     })
 
 // functions
@@ -54,20 +55,43 @@ function generateGallery(users){
     gallery.innerHTML = html.join('');
 }
 
+
+// modal window 
+
+// open and close functions
+function clickCard(user){
+    const cards = document.querySelectorAll('.card');
+    for(let i=0; i<cards.length; i++){
+        cards[i].addEventListener('click', () => {
+            modalWindow(user, i);
+
+            closeModal();
+        });
+    }
+}
+
+function closeModal(){
+    const closeBtn = document.getElementById('modal-close-btn');
+    closeBtn.addEventListener('click', () => {
+        modal.remove();
+    });
+}
+
+// modal window creation
 function modalWindow(user, i){
     const html = `
         <div class="modal-container">
             <div class="modal">
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                 <div class="modal-info-container">
-                    <img class="modal-img" src="${data.picture.medium}" alt="profile picture">
-                    <h3 id="name" class="modal-name cap">${data.name.first} ${data.name.last}</h3>
-                    <p class="modal-text">${data.email}</p>
-                    <p class="modal-text cap">${data.location.city}, ${data.location.state}</p>
+                    <img class="modal-img" src="${user[i].picture.medium}" alt="profile picture">
+                    <h3 id="name" class="modal-name cap">${user[i].name.first} ${user[i].name.last}</h3>
+                    <p class="modal-text">${user[i].email}</p>
+                    <p class="modal-text cap">${user[i].location.city}, ${user[i].location.state}</p>
                     <hr>
-                    <p class="modal-text">${data.cell}</p>
-                    <p class="modal-text">${data.location}</p>
-                    <p class="modal-text">Birthday: ${data.date}</p>
+                    <p class="modal-text">${user[i].cell}</p>
+                    <p class="modal-text">${user[i].location}</p>
+                    <p class="modal-text">Birthday: ${user[i].date}</p>
                 </div>
             </div>
 
