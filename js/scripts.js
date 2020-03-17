@@ -79,6 +79,7 @@ function closeModal(){
 
 // modal window creation
 function modalWindow(user, i){
+    const userDob = new Date(user[i].dob.date).toLocaleDateString();
     const html = `
         <div class="modal-container">
             <div class="modal">
@@ -91,7 +92,7 @@ function modalWindow(user, i){
                     <hr>
                     <p class="modal-text">${user[i].cell}</p>
                     <p class="modal-text">${user[i].location.street.number} ${user[i].location.street.name} ${user[i].location.city}, ${user[i].location.state} ${user[i].location.postcode}</p>
-                    <p class="modal-text">Birthday: ${user[i].date}</p>
+                    <p class="modal-text">Birthday: ${userDob}</p>
                 </div>
             </div>
 
