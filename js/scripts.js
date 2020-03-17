@@ -4,6 +4,7 @@ const randomUrl = 'https://fsjs-public-api-backup.herokuapp.com/api';
 const treehouseUrl = 'https://randomuser.me/api/?nat=us&results=12'; 
 
 const searchContainer = document.querySelector('.search-container');
+const modalBtns = document.getElementsByClassName('modal-btn-container');
 const gallery = document.getElementById('gallery');
 
 const body = document.querySelector('body');
@@ -96,7 +97,6 @@ function modalWindow(user, i){
                 </div>
             </div>
 
-            // IMPORTANT: Below is only for exceeds tasks 
             <div class="modal-btn-container">
                 <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
                 <button type="button" id="modal-next" class="modal-next btn">Next</button>
@@ -107,4 +107,21 @@ function modalWindow(user, i){
     modal.innerHTML = html;
 
     body.appendChild(modal);
+    for(let j=0; j<modalBtns.length; j++){
+        modalBtns[j].addEventListener('click', event => {
+            if(event.target.id === "modal-next"){
+                if(i === user.length - 1){
+                    i=0;
+                }
+                modalWindow(user, i + 1);
+                closeModal();
+            } else if(event.target.id === "modal-prev"){
+                if(i === 0){
+                    i = user.length;
+                }
+                modalWindow(user, i - 1);
+                closeModal();
+            }
+        });
+    }
 }
