@@ -27,9 +27,12 @@ fetchData(randomUrl)
     .then(data => {
         generateGallery(data.results)
         clickCard(data.results)
+
+        searchUsers();
     })
 
 // functions
+// // fetch function
 function checkStatus(response){
     if(response.ok){
         return Promise.resolve(response)
@@ -38,6 +41,19 @@ function checkStatus(response){
     }
 }
 
+// // search functions 
+function searchUsers(){
+    const html = `
+        <form action="#" method="get">
+            <input type="search" id="search-input" class="search-input" placeholder="Search...">
+            <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
+        </form>
+    `;
+
+    searchContainer.innerHTML = html;
+}
+
+// // gnerate gallery of users
 function generateGallery(users){
     const html = users.map(data => {
         return `
@@ -59,7 +75,7 @@ function generateGallery(users){
 
 // modal window 
 
-// open and close functions
+// // open and close functions
 function clickCard(user){
     const cards = document.querySelectorAll('.card');
     for(let i=0; i<cards.length; i++){
@@ -78,7 +94,7 @@ function closeModal(){
     });
 }
 
-// modal window creation
+// // modal window creation
 function modalWindow(user, i){
     const userDob = new Date(user[i].dob.date).toLocaleDateString();
     const html = `
