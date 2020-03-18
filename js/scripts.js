@@ -53,6 +53,16 @@ function searchUsers(){
     searchContainer.innerHTML = html;
 }
 
+function usingSearch(e){
+    const searchInput = document.getElementById('search-input');
+    const cards = document.querySelectorAll('.card');
+
+    e.preventDefault();
+    for(let i=0; i<cards.length; i++){
+        
+    }
+}
+
 // // gnerate gallery of users
 function generateGallery(users){
     const html = users.map(data => {
