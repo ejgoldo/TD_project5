@@ -68,7 +68,7 @@ function usingSearch(e){
             cards[i].style.display = '';
         } else {
             cards[i].style.display = 'none';
-        }
+        } 
     }
 }
 
