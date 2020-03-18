@@ -1,7 +1,7 @@
 // global variables
-const randomUrl = 'https://fsjs-public-api-backup.herokuapp.com/api';
+const randomUrl = 'https://randomuser.me/api/?nat=us&results=12'; 
 // random user api down - move url below above once the random user api is working again
-const treehouseUrl = 'https://randomuser.me/api/?nat=us&results=12'; 
+const treehouseUrl = 'https://fsjs-public-api-backup.herokuapp.com/api'; 
 
 const searchContainer = document.querySelector('.search-container');
 const modalBtns = document.getElementsByClassName('modal-btn-container');
