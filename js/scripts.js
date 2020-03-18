@@ -28,7 +28,8 @@ fetchData(randomUrl)
         generateGallery(data.results)
         clickCard(data.results)
 
-        searchUsers();
+        searchUsersForm();
+        submitSearch();
     })
 
 // functions
@@ -42,7 +43,7 @@ function checkStatus(response){
 }
 
 // // search functions 
-function searchUsers(){
+function searchUsersForm(){
     const html = `
         <form action="#" method="get">
             <input type="search" id="search-input" class="search-input" placeholder="Search...">
@@ -56,12 +57,29 @@ function searchUsers(){
 function usingSearch(e){
     const searchInput = document.getElementById('search-input');
     const cards = document.querySelectorAll('.card');
+    const siValue = searchInput.value.toUpperCase();
 
     e.preventDefault();
     for(let i=0; i<cards.length; i++){
-        
+        let names = cards[i].getElementsByTagName('h3')[0];
+        let namesContent = names.textContent;
+
+        if(namesContent.toUpperCase().indexOf(siValue) > -1){
+            cards[i].style.display = '';
+        } else {
+            cards[i].style.display = 'none';
+        }
     }
 }
+
+function submitSearch(){
+    const submitButton = document.getElementById('search-submit');
+    submitButton.addEventListener('click', (e) => {
+        usingSearch(e);
+    });
+}
+
+
 
 // // gnerate gallery of users
 function generateGallery(users){
