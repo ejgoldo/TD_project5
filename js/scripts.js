@@ -163,12 +163,12 @@ function modalWindow(user, i){
     for(let j=0; j<modalBtns.length; j++){
         modalBtns[j].addEventListener('click', event => {
             if(event.target.id === "modal-next"){
-                if(i === user.length - 1){
+                if(i === user.length - 1 && i !== 11){
                     i=0;
                 }
                 modalWindow(user, i + 1);
                 closeModal();
-            } else if(event.target.id === "modal-prev"){
+            } else if(event.target.id === "modal-prev" && i !== 0){
                 if(i === 0){
                     i = user.length;
                 }
