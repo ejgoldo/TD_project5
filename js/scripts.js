@@ -1,6 +1,6 @@
 // global variables
 const randomUrl = 'https://randomuser.me/api/?nat=us&results=12'; 
-// random user api down - move url below above once the random user api is working again
+// random user api down - move url below above if the random user api is not working 
 const treehouseUrl = 'https://fsjs-public-api-backup.herokuapp.com/api'; 
 
 const searchContainer = document.querySelector('.search-container');
@@ -90,6 +90,8 @@ function submitSearch(){
 
 
 // //////////////////////////////////////////////////////////       generate gallery of users
+
+// .map makes an array of the users and the function then displays them on the page
 function generateGallery(users){
     const html = users.map(data => {
         return `
@@ -111,7 +113,7 @@ function generateGallery(users){
 
 // /////////////////////////////////////////////////////////////        modal window 
 
-// // open and close functions
+// // open and close functions for the modal window
 function clickCard(user){
     const cards = document.querySelectorAll('.card');
     for(let i=0; i<cards.length; i++){
@@ -160,6 +162,8 @@ function modalWindow(user, i){
 
     body.insertBefore(modal, script);
 
+
+    // modal buttons to cycle through each populated user in the modal window
     for(let j=0; j<modalBtns.length; j++){
         modalBtns[j].addEventListener('click', event => {
             if(event.target.id === "modal-next"){
