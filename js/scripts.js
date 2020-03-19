@@ -43,9 +43,10 @@ function checkStatus(response){
 }
 
 // ////////////////////////////////////////////////////////                      search feature
+const script = document.querySelector('script');
 const errorInSearch = document.createElement('h3');
 errorInSearch.style.display = 'none';
-body.append(errorInSearch);
+body.insertBefore(errorInSearch, script);
 errorInSearch.textContent = 'There are no employees that match your search';
 
 function searchUsersForm(){
