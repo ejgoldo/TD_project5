@@ -10,6 +10,7 @@ const gallery = document.getElementById('gallery');
 const body = document.querySelector('body');
 const modal = document.createElement('DIV');
 
+// //////////////////////////////////////////////////////////////////////       fetch API
 // fetch function
 /*
 this fetch function separates code that would have cluttered the fetch api.
@@ -22,7 +23,7 @@ function fetchData(url){
         .catch(error => console.log('An error occurred', error));
 }
 
-// fetch
+// fetch api
 fetchData(randomUrl)
     .then(data => {
         generateGallery(data.results)
@@ -32,7 +33,6 @@ fetchData(randomUrl)
         submitSearch();
     })
 
-// functions
 // // fetch function
 function checkStatus(response){
     if(response.ok){
@@ -42,7 +42,7 @@ function checkStatus(response){
     }
 }
 
-// // search feature
+// ////////////////////////////////////////////////////////                      search feature
 const errorInSearch = document.createElement('h3');
 errorInSearch.style.display = 'none';
 gallery.append(errorInSearch);
@@ -87,7 +87,7 @@ function submitSearch(){
 
 
 
-// // generate gallery of users
+// //////////////////////////////////////////////////////////       generate gallery of users
 function generateGallery(users){
     const html = users.map(data => {
         return `
@@ -107,7 +107,7 @@ function generateGallery(users){
 }
 
 
-// modal window 
+// /////////////////////////////////////////////////////////////        modal window 
 
 // // open and close functions
 function clickCard(user){
