@@ -42,7 +42,12 @@ function checkStatus(response){
     }
 }
 
-// // search functions 
+// // search feature
+const errorInSearch = document.createElement('h3');
+errorInSearch.style.display = 'none';
+gallery.append(errorInSearch);
+errorInSearch.textContent = 'There are no employees that match your search';
+
 function searchUsersForm(){
     const html = `
         <form action="#" method="get">
@@ -54,34 +59,35 @@ function searchUsersForm(){
     searchContainer.innerHTML = html;
 }
 
-function usingSearch(e){
-    const searchInput = document.getElementById('search-input');
-    const cards = document.querySelectorAll('.card');
-    const siValue = searchInput.value.toUpperCase();
-
-    e.preventDefault();
-    for(let i=0; i<cards.length; i++){
-        let names = cards[i].getElementsByTagName('h3')[0];
-        let namesContent = names.textContent;
-
-        if(namesContent.toUpperCase().indexOf(siValue) > -1){
-            cards[i].style.display = '';
-        } else {
-            cards[i].style.display = 'none';
-        } 
+function usingSearch(input, userList){
+    let results = [];
+    userList.forEach(user => {
+        user.parentNode.parentNode.style.display = 'none';
+        if(user.textContent.toLowerCase().includes(input.value.toLowerCase())) {
+            user.parentNode.parentNode.style.display = '';
+            results.push(user);
+        }
+    });
+    
+    if(input !== '' && results.length === 0){
+        errorInSearch.style.display = '';
+    } else {
+        errorInSearch.style.display = 'none';
     }
 }
 
 function submitSearch(){
-    const submitButton = document.getElementById('search-submit');
-    submitButton.addEventListener('click', (e) => {
-        usingSearch(e);
+    searchContainer.addEventListener('keyup', () => {
+        usingSearch(
+            document.querySelector('#search-input'),
+            document.querySelectorAll('.card-name')
+        );
     });
 }
 
 
 
-// // gnerate gallery of users
+// // generate gallery of users
 function generateGallery(users){
     const html = users.map(data => {
         return `
