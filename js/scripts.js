@@ -157,7 +157,7 @@ function modalWindow(user, i){
 
     modal.innerHTML = html;
 
-    body.appendChild(modal);
+    body.insertBefore(modal, script);
     for(let j=0; j<modalBtns.length; j++){
         modalBtns[j].addEventListener('click', event => {
             if(event.target.id === "modal-next"){
