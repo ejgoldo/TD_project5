@@ -168,8 +168,8 @@ function modalWindow(user, i){
                 }
                 modalWindow(user, i + 1);
                 closeModal();
-            } else if(event.target.id === "modal-prev" && i !== 0){
-                if(i === 0){
+            } else if(event.target.id === "modal-prev"){
+                if(i === 0 && i !== 0){
                     i = user.length;
                 }
                 modalWindow(user, i - 1);
