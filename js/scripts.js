@@ -45,7 +45,7 @@ function checkStatus(response){
 // ////////////////////////////////////////////////////////                      search feature
 const errorInSearch = document.createElement('h3');
 errorInSearch.style.display = 'none';
-gallery.append(errorInSearch);
+body.append(errorInSearch);
 errorInSearch.textContent = 'There are no employees that match your search';
 
 function searchUsersForm(){
