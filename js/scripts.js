@@ -4,10 +4,11 @@ const randomUrl = 'https://randomuser.me/api/?nat=us&results=12';
 const treehouseUrl = 'https://fsjs-public-api-backup.herokuapp.com/api'; 
 
 const searchContainer = document.querySelector('.search-container');
-const modalBtns = document.getElementsByClassName('modal-btn-container');
 const gallery = document.getElementById('gallery');
 
 const body = document.querySelector('body');
+
+const modalBtns = document.getElementsByClassName('modal-btn-container');
 const modal = document.createElement('DIV');
 
 // //////////////////////////////////////////////////////////////////////       fetch API
@@ -158,6 +159,7 @@ function modalWindow(user, i){
     modal.innerHTML = html;
 
     body.insertBefore(modal, script);
+
     for(let j=0; j<modalBtns.length; j++){
         modalBtns[j].addEventListener('click', event => {
             if(event.target.id === "modal-next"){
